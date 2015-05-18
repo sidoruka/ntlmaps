@@ -90,7 +90,7 @@ class ntlm_auther:
         while((not connection.rserver_all_got) and (not connection.rserver_socket_closed)):
             select.select([connection.rserver_socket.fileno()], [], [], 2.0)
             connection.run_rserver_loop()
-            if connection.config['DEBUG']['SCR_DEBUG']: print '\b+',
+            if connection.config['DEBUG']['SCR_DEBUG']: print ' +',
 
         if connection.rserver_head_obj:
             connection.logger.log('*** Got NTLM message 2 from remote server.\n')
@@ -182,7 +182,7 @@ class ntlm_auther:
         while((not connection.rserver_all_got) and (not connection.rserver_socket_closed)):
             select.select([connection.rserver_socket.fileno()], [], [], 2.0)
             connection.run_rserver_loop()
-            if connection.config['DEBUG']['SCR_DEBUG']: print '\b+',
+            if connection.config['DEBUG']['SCR_DEBUG']: print '+',
 
         if connection.rserver_head_obj:
             connection.logger.log('*** Got NTLM message 2 from server.\n')

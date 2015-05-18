@@ -82,7 +82,7 @@ class proxy_HTTP_Client:
     #-----------------------------------------------------------------------
     def run(self):
         ""
-        if self.config['DEBUG']['SCR_DEBUG']: print 'Connected from %s:%d' % self.client_address
+        # if self.config['DEBUG']['SCR_DEBUG']: print 'Connected %s:%d ' % self.client_address
 
         while(not self.stop_request):
 
@@ -128,6 +128,10 @@ class proxy_HTTP_Client:
                     self.connect_rserver()
 
                 self.log_url()
+
+                if self.config['DEBUG']['SCR_DEBUG']: 
+                   print 'Connected %s:%d ' % self.client_address, self.client_head_obj.fields[1]
+
                 self.send_client_header()
 
             if self.client_header_sent and (not self.client_data_sent):
@@ -139,7 +143,7 @@ class proxy_HTTP_Client:
                 self.check_tunnel_mode()
                 self.reset_client()
 
-            if self.config['DEBUG']['SCR_DEBUG']: print '\b.',
+            # if self.config['DEBUG']['SCR_DEBUG']: print '\b.',
 
             # Remote server part
             if not self.rserver_socket_closed:
@@ -164,8 +168,10 @@ class proxy_HTTP_Client:
 
             self.check_stop_request()
 
+        if self.config['DEBUG']['SCR_DEBUG']: print 'Finished.\n'
+        #  % self.client_head_obj.fields[1]
         self.exit()
-        if self.config['DEBUG']['SCR_DEBUG']: print 'Finished %s:%d' % self.client_address
+        # self.client_address
 
     #-----------------------------------------------------------------------
     def fix_client_header(self):

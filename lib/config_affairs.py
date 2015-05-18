@@ -17,8 +17,10 @@
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #
 
-import socket, thread, string, sys
+import socket, thread, sys
+# string, 
 import logger
+from utils import string
 
 #-------------------------------------------------------------------------
 def arrange(conf):
@@ -42,6 +44,7 @@ def arrange(conf):
         else:
             print "ERROR: There is a problem with 'MAX_CONNECTION_BACKLOG' in the config (neither a number nor 'SOMAXCONN'?)"
             sys.exit(1)
+
     conf['GENERAL']['LISTEN_PORT'] = makeInt(conf['GENERAL']['LISTEN_PORT'], 'LISTEN_PORT')
 
     conf['GENERAL']['ALLOW_EXTERNAL_CLIENTS'] = makeInt(conf['GENERAL']['ALLOW_EXTERNAL_CLIENTS'], 'ALLOW_EXTERNAL_CLIENTS')

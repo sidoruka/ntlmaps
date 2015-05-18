@@ -19,13 +19,16 @@
 # Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 #
-import __init__
 
+import __init__
 import sys
 
-import server, config, config_affairs
-
+import server
+import config, config_affairs
 import command_line
+
+# from ntlmaps import server, config, config_affairs
+#  from ntlmaps import command_line
 
 def override_config_with_command_line_options(conf, options):
     if options.has_key('port'):

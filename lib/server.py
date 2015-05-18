@@ -63,6 +63,7 @@ class AuthProxyServer:
             print "ERROR: Could not create socket. Possibly port %s is still being used by another process." % self.config['GENERAL']['LISTEN_PORT']
             sys.exit(1)
         print 'Now listening at %s on port %s' % (self.config['GENERAL']['HOST'], self.config['GENERAL']['LISTEN_PORT'])
+
         while(1):
             s.listen(self.config['GENERAL']['MAX_CONNECTION_BACKLOG'])
             try:

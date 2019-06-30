@@ -34,6 +34,12 @@ def override_config_with_command_line_options(conf, options):
     if options.has_key('port'):
         conf['GENERAL']['LISTEN_PORT'] = options['port']
 
+    if options.has_key('downstream_proxy_host'):
+        conf['GENERAL']['PARENT_PROXY'] = options['downstream_proxy_host']
+
+    if options.has_key('downstream_proxy_port'):
+        conf['GENERAL']['PARENT_PROXY_PORT'] = options['downstream_proxy_port']
+
     if options.has_key('username'):
         conf['NTLM_AUTH']['USER'] = options['username']
         # if you are setting a username, then you don't want
@@ -48,6 +54,9 @@ def override_config_with_command_line_options(conf, options):
 
     if options.has_key('domain'):
         conf['NTLM_AUTH']['NT_DOMAIN'] = options['domain']
+
+    if options.has_key('debug'):
+        conf['DEBUG']['DEBUG'] = int(options['debug'])
 
 
 def get_config_filename(options):

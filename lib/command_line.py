@@ -27,7 +27,8 @@ def parse_command_line(cmdline):
     opts, values = getopt.getopt(cmdline,
                                  '',
                                  ['config=', 'domain=', 'username=', 'password=',
-                                 'port='])
+                                 'port=', 'downstream-proxy-host=', 'downstream-proxy-port=',
+                                 'debug'])
 
     options = {}
     for opt in opts:
@@ -42,5 +43,10 @@ def parse_command_line(cmdline):
             options['port'] = int(value)
         elif option == '--config':
             options['config_file'] = value
-
+        elif option == '--downstream-proxy-host':
+            options['downstream_proxy_host'] = value
+        elif option == '--downstream-proxy-port':
+            options['downstream_proxy_port'] = value
+        elif option == '--debug':
+            options['debug'] = True
     return options

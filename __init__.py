@@ -22,7 +22,15 @@
 
 import os, sys
 
-ntlmaps_dir = os.path.dirname(os.path.abspath(__file__))
+if getattr(sys, 'frozen', False):
+    # https://stackoverflow.com/a/42615559
+    # If the application is run as a bundle, the pyInstaller bootloader
+    # extends the sys module by a flag frozen=True and sets the app 
+    # path into variable _MEIPASS'.
+    ntlmaps_dir = sys._MEIPASS
+else:
+    ntlmaps_dir = os.path.dirname(os.path.abspath(__file__))
+
 ntlmaps_libdir = ntlmaps_dir + '/lib'
 sys.path.append(ntlmaps_libdir)
 
